@@ -4,6 +4,7 @@ import m3u8
 import os
 import re
 import requests
+import urllib.parse
 
 from datetime import datetime
 from io import BytesIO
