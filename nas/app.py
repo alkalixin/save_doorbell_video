@@ -20,8 +20,9 @@ def save_video():
     current_date = datetime.now().strftime("%Y%m%d")
 
     data = request.form
-    stream_address = data.get('stream_address')
-    motion_video_time = re.sub(r'[^0-9]', '', data.get('motion_video_time'))
+    stream_address = urllib.parse.unquote(data.get('stream_address'))
+    motion_video_time = data.get('motion_video_time')
+    
     save_path = '/nas'  # 视频保存位置
     video_limit = '30'  # 保存天数上限
 
