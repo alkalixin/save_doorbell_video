@@ -4,6 +4,7 @@ LABEL maintainer="v1st233@gmail.com"
 WORKDIR /app
 
 COPY requirements.txt ./
+COPY app.py ./
 COPY sources.list /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y \
