@@ -25,7 +25,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          working-directory: ./nas
-          context: .
+          context: ./nas
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
