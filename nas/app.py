@@ -50,8 +50,7 @@ def save_video():
         try:
             os.system(f"rm -rf {save_video_path}")
 
-            # 软解把HEVC转成H.264，占用较大，软解硬解都能放
-            os.system(f"ffmpeg -f concat -safe 0 -i {ts_tmp_dir}ts.list -c:v libx264 -preset slow -crf 22 -c:a copy -b:a 128k {save_video_path}")
+            os.system(f"ffmpeg -f concat -safe 0 -i {ts_tmp_dir}ts.list -c:a copy -c:v copy -f mp4 {save_video_path}")
 
             # 读取生成的 MP4 文件为二进制数据
             with open(f"{save_video_path}", 'rb') as file:
