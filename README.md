@@ -2,6 +2,8 @@
 
 > 用于保存米家门铃视频的Python脚本
 
+**相比于原版接口，本接口在生成mp4视频后将视频内容返回了，可以直接用返回的二进制流继续下一步操作，比如直接将返回的内容上传到企业微信临时文件，然后做消息推送**
+
 ### 准备
 #### HomeAssistant
 - 接入米家xiaomi_miot_auto
@@ -19,7 +21,7 @@
 - Nas配置  
 把nas目录复制到Nas中，cd到nas目录下    
     - Docker环境  
-    执行命令`docker build -t save2mp4 .`创建镜像，执行完成后运行`docker run -it -p 5005:5005 -v $(pwd):/app -v /{替换为你的视频保存地址}:/nas --device=/dev/dri:/dev/dri save2mp4`
+    运行`docker run -p 5005:5005 -v /{替换为你的视频保存地址}:/nas --device=/dev/dri:/dev/dri ghcr.io/alkalixin/save_doorbell_video:latest`
     - Linux环境(不使用Docker)  
         - 安装ffmpeg和驱动
         - 修改app.py中19行save_path为你自己的保存地址
